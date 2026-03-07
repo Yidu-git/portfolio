@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #bafff9;
+  --color-primary-100: #aff7ff;
+  --color-primary-200: #98e7ff;
+  --color-primary-300: #73c5f1;
+  --color-primary-400: #45bfef;
+  --color-primary-500: #20b2ed;
+  --color-primary-600: #4595c0;
+  --color-primary-700: #024783;
+  --color-primary-800: #0a2a6b;
+  --color-primary-900: #0d173e;
+
+  --color-secondary-50: #e0f7ff;
+  --color-secondary-100: #c4e8ff;
+  --color-secondary-200: #9ed2ff;
+  --color-secondary-300: #61b5ff;
+  --color-secondary-400: #5195f6;
+  --color-secondary-500: #1a74f3;
+  --color-secondary-600: #0c5ddf;
+  --color-secondary-700: #094dc3;
+  --color-secondary-800: #033fa5;
+  --color-secondary-900: #041d67;
+
+  --color-accent-50: #ffd7f9;
+  --color-accent-100: #fb93e3;
+  --color-accent-200: #ed59cb;
+  --color-accent-300: #ee53cc;
+  --color-accent-400: #f251d7;
+  --color-accent-500: #ea3ac1;
+  --color-accent-600: #ce2bd1;
+  --color-accent-700: #9d21a1;
+  --color-accent-800: #711e85;
+  --color-accent-900: #2c0d3a;
+}
+
+@layer components {
+  .button,
+  .button-secondary,
+  .button-outline {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--color-primary-500);
+    border-radius: 0.2rem;
+    padding: 3px 15px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 7px 0 0 var(--color-primary-200);
+    transform: translateY(-7px);
+    /* transition: all 50ms linear; */
+  }
+  .button:hover,
+  .button-secondary:hover,
+  .button-outline:hover {
+    background-color: var(--color-primary-400);
+  }
+  .button:active,
+  .button-secondary:active,
+  .button-outline:active {
+    background-color: var(--color-primary-300);
+    transform: translateY(0px);
+    box-shadow: 0px 0px 0px 0px #000;
+  }
+  .button-secondary {
+    background-color: var(--color-secondary-500);
+    box-shadow: 0px 5px 0 0 var(--color-secondary-300);
+  }
+  .button-secondary:hover {
+    background-color: var(--color-secondary-300);
+  }
+  .button-secondary:active {
+    background-color: var(--color-secondary-100);
+    box-shadow: 0px 0px 0px 0px #000;
+  }
+  .button-outline {
+    color: black;
+    background-color: white;
+    border: 1px var(--color-primary-500) solid;
+    box-shadow: 0px 5px 0 0 var(--color-primary-300);
+  }
+  .button-outline:hover {
+    background-color: white;
+    border: 1px solid var(--color-primary-300);
+    box-shadow: 0 5px 0 0 var(--color-primary-200);
+  }
+  .button-outline:active {
+    background-color: white;
+    border: 1px solid var(--color-primary-100);
+    box-shadow: 0px 0px 0px 0px #000;
+  }
+
+  .button.button-big {
+    font-size: larger;
+    font-weight: bold;
+    padding: 5px 20px;
+  }
+
+  .dotgrid,
+  .dotgrid-md,
+  .dotgrid-lg {
+    background-color: #fff;
+    background-image: radial-gradient(
+      circle at center,
+      var(--color-primary-500) 1px,
+      transparent 0
+    );
+    background-size: 20px 20px;
+  }
+  .dotgrid-md {
+    background-size: 50px 50px;
+  }
+  .dotgrid-lg {
+    background-size: 30px 30px;
+    background-image: radial-gradient(
+      circle at center,
+      var(--color-primary-500) 1px,
+      transparent 0
+    );
+  }
+  .linegrid,
+  .linegrid-md,
+  .linegrid-lg {
+    background-color: white;
+    background-size: 10px 10px;
+    background-image:
+      linear-gradient(to right, var(--color-primary-500) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-primary-500) 1px, transparent 1px);
+  }
+  .linegrid-lg {
+    background-size: 50px 50px;
+  }
+  .grid-animated {
+    background-position: 0 0;
+    animation: gridanim 4s linear 0s infinite forwards;
+  }
+}
+
+@keyframes gridanim {
+  0% {
+    background-position: 00px 00px;
+  }
+  100% {
+    background-position: -100px 100px;
+  }
+}
+
+p {
+  font-family: "jetbrains mono", monospace;
+}
