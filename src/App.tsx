@@ -1,11 +1,8 @@
-import { useState } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
 import LandingPage from "./Pages/Landing";
 import NavBar from "./Components/Navbar";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <Routes>
       <Route

@@ -2,10 +2,10 @@
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const Links = {
-    link: "",
-    path: "",
-  };
+  // const Links = {
+  //   link: "",
+  //   path: "",
+  // };
   return (
     <div className="sticky top-0 left-0 flex h-fit w-screen flex-row justify-between bg-[#ffffff00] px-10 py-3 shadow-[0px_10px_15px_-15px_#00000034] backdrop-blur-lg md:px-20">
       <Link to="/">
