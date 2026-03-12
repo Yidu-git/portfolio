@@ -7,7 +7,7 @@ const NavBar = () => {
   //   path: "",
   // };
   return (
-    <div className="sticky top-0 left-0 flex h-fit w-screen flex-row justify-between bg-[#ffffff00] px-10 py-3 shadow-[0px_10px_15px_-15px_#00000034] backdrop-blur-lg md:px-20">
+    <div className="sticky top-0 left-0 z-1000 flex h-fit w-screen flex-row justify-between bg-[#ffffff00] px-10 py-3 shadow-[0px_10px_15px_-15px_#00000034] backdrop-blur-lg md:px-20">
       <Link to="/">
         <h1 className="text-[32px] font-bold">Yididiya</h1>
       </Link>

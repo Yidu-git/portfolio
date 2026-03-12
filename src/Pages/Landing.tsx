@@ -1,6 +1,7 @@
 // import { Link } from "react-router-dom";
 import { Link2 } from "lucide-react";
-// Landing page
+
+import SplineLandingScene from "../Assets/Spline/SplineLanding";
 
 type tech = string | "" | "" | "";
 const techImg: Record<tech, string> = {
@@ -26,10 +27,11 @@ const LandingPage = () => {
     <div className="flex flex-col">
       <section
         id="hero"
-        className="linegrid-lg grid-animated flex items-center justify-center bg-fixed py-42"
+        className="items-cener relative z-100 flex justify-center bg-fixed px-5 py-60 md:px-20"
       >
-        <div className="flex h-fit w-fit flex-col items-center justify-center rounded-lg bg-white px-10 py-10 shadow-xl">
-          <h1 className="text-4xl font-bold">
+        <SplineLandingScene />
+        <div className="flex h-fit w-fit flex-col items-center justify-center rounded-[1.5rem] bg-transparent px-5 py-10 backdrop-blur-md md:px-20 md:py-10">
+          <h1 className="text-4xl font-bold text-white">
             Designing what looks <span className="text-primary-500">good</span>,
             <br />
             Building what <span className="text-secondary-500">works</span>.
@@ -38,7 +40,7 @@ const LandingPage = () => {
         </div>
       </section>
       <section id="projects">
-        <div className="flex h-300 w-full flex-col gap-5 bg-white px-10 py-15 shadow-[5px_0px_15px_-8px_#00000090]">
+        <div className="flex h-fit w-full flex-col gap-5 bg-white px-10 py-15 shadow-[5px_0px_15px_-8px_#00000090]">
           <h1 className="mb-3 text-3xl">Projects</h1>
           <div className="border-primary-300 flex flex-col gap-5 rounded-xl border px-6 py-4 shadow-[0px_10px_15px_-10px_#00000030] transition-all duration-150 ease-in-out hover:shadow-[0px_15px_20px_-10px_#00000030] md:flex-row">
             <div className="w-full">
@@ -107,22 +109,22 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-        <section id="about">
-          <div className="flex h-300 w-full flex-col gap-5 bg-white px-10 py-15 shadow-[5px_0px_15px_-8px_#00000090]">
-            <h1 className="mb-3 text-3xl">About me</h1>
-            <p>
-              I am a full stack developer and designer who is passionate about
-              math, science, computer science and design. I have worked on
-              projects involving both web design and 3D rendering.
-              <br />
-              <br />
-              My passion for math and computer science has led me to discovering
-              the connections between the technologies in our everyday lives. I
-              personally believe that anyone who wants to do anything related to
-              programing or CS, they should start with math.
-            </p>
-          </div>
-        </section>
+      </section>
+      <section id="about">
+        <div className="flex h-300 w-full flex-col gap-5 bg-white px-10 py-15 shadow-[5px_0px_15px_-8px_#00000090]">
+          <h1 className="mb-3 text-3xl">About me</h1>
+          <p>
+            I am a full stack developer and designer who is passionate about
+            math, science, computer science and design. I have worked on
+            projects involving both web design and 3D rendering.
+            <br />
+            <br />
+            My passion for math and computer science has led me to discovering
+            the connections between the technologies in our everyday lives. I
+            personally believe that anyone who wants to do anything related to
+            programing or CS, they should start with math.
+          </p>
+        </div>
       </section>
     </div>
   );
