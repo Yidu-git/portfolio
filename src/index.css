@@ -36,9 +36,14 @@
 }
 
 @layer components {
+  .font-jbm {
+    font-family: "jetbrains mono";
+  }
+
   .button,
   .button-secondary,
-  .button-outline {
+  .button-outline,
+  .button-xl {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -56,12 +61,14 @@
   }
   .button:hover,
   .button-secondary:hover,
-  .button-outline:hover {
+  .button-outline:hover,
+  .button-xl:hover {
     background-color: var(--color-primary-400);
   }
   .button:active,
   .button-secondary:active,
-  .button-outline:active {
+  .button-outline:active,
+  .button-xl:active {
     background-color: var(--color-primary-300);
     transform: translateY(0px);
     box-shadow: 0px 0px 0px 0px #000;
@@ -94,10 +101,18 @@
     box-shadow: 0px 0px 0px 0px #000;
   }
 
-  .button.button-big {
-    font-size: larger;
+  .button-xl {
+    font-size: 24px;
     font-weight: bold;
     padding: 5px 20px;
+  }
+  .button-xl:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 0 0 var(--color-primary-200);
+  }
+  .button-xl:active {
+    transform: translateY(0px);
+    box-shadow: 0px 0px 0px 0px #000;
   }
 
   .dotgrid,
@@ -138,6 +153,20 @@
     background-position: 0 0;
     animation: gridanim 4s linear 0s infinite forwards;
   }
+
+  .spin-animation {
+    animation: spin 4s linear 0s infinite forwards;
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+    background-color: #000;
+  }
+  100% {
+    rotate: 180deg;
+  }
 }
 
 @keyframes gridanim {
@@ -153,10 +182,28 @@ p {
   font-family: "jetbrains mono", monospace;
 }
 
-.spline-background {
+.spline-background,
+.smb-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.spline-mobile-background {
+  display: none;
+}
+
+.smb-container {
+  display: flex;
+  background-color: black;
+  background-image: url(Assets/Images/Portfolio_Landing_Mobile.jpg);
+  background-size: cover;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

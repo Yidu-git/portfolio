@@ -1,7 +1,18 @@
 // import { Link } from "react-router-dom";
 import { Link2 } from "lucide-react";
+import { Link as LinkIco } from "lucide-react";
 
+import LandingSplineImg from "../Assets/Images/Portfolio_Landing_Mobile.jpg";
 import SplineLandingScene from "../Assets/Spline/SplineLanding";
+import useWindowWidth from "../Hooks/useWindowWidth";
+
+// Skills icons
+import ReactLogo from "../Assets/Icons/Programing/react.svg";
+import PythonLogo from "../Assets/Icons/Programing/python.svg";
+import MySQLLogo from "../Assets/Icons/Programing/MySQL.svg";
+import JSLogo from "../Assets/Icons/Programing/JS.svg";
+import TSLogo from "../Assets/Icons/Programing/TS.svg";
+import SplineLogo from "../Assets/Icons/Programing/Spline.png";
 
 type tech = string | "" | "" | "";
 const techImg: Record<tech, string> = {
@@ -14,7 +25,74 @@ const techColor: Record<tech, string> = {
   //   JavaScript: "#eeee00",
 };
 
+type skill = { skill: string; icon: string; class: string };
+const ProgramingSkills: skill[] = [
+  {
+    skill: "TypeScript",
+    icon: TSLogo,
+    class: "p-0! bg-[#007acc]!",
+  },
+  {
+    skill: "JavaScript",
+    icon: JSLogo,
+    class: "p-0! bg-[#f0db4f]!",
+  },
+  {
+    skill: "Python",
+    icon: PythonLogo,
+    class: "",
+  },
+  {
+    skill: "MySQL",
+    icon: MySQLLogo,
+    class: "bg-neutral-800!",
+  },
+  {
+    skill: "React",
+    icon: ReactLogo,
+    class: "spin-animation bg-transparent",
+  },
+];
+
+const DesignSkills: skill[] = [
+  {
+    skill: "Figma",
+    icon: MySQLLogo,
+    class: "bg-neutral-800!",
+  },
+  {
+    skill: "Blender",
+    icon: MySQLLogo,
+    class: "bg-neutral-800!",
+  },
+  {
+    skill: "Spline",
+    icon: SplineLogo,
+    class: "",
+  },
+];
+
+const skillsMap = (skills: skill[]) => {
+  return skills.map((skill) => (
+    <div className="flex h-fit w-fit flex-col rounded-md bg-white shadow-md transition-all duration-150 hover:shadow-lg">
+      <img
+        src={skill.icon}
+        alt=""
+        className={
+          "h-25 w-25 rounded-md bg-transparent p-5 md:h-40 md:w-40 " +
+          skill.class
+        }
+      />
+      <h1 className="w-full py-2 text-center text-lg font-bold md:text-2xl">
+        {skill.skill}
+      </h1>
+    </div>
+  ));
+};
+
 const LandingPage = () => {
+  const width = useWindowWidth();
+
   const techStackMap = (stack: tech[]) => {
     return stack.map((tech, i) => (
       <div key={tech + i}>
@@ -25,27 +103,53 @@ const LandingPage = () => {
   };
   return (
     <div className="flex flex-col">
-      <section
-        id="hero"
-        className="items-cener relative z-100 flex justify-center bg-fixed px-5 py-60 md:px-20"
-      >
-        <SplineLandingScene />
-        <div className="flex h-fit w-fit flex-col items-center justify-center rounded-[1.5rem] bg-transparent px-5 py-10 backdrop-blur-md md:px-20 md:py-10">
-          <h1 className="text-4xl font-bold text-white">
-            Designing what looks <span className="text-primary-500">good</span>,
-            <br />
-            Building what <span className="text-secondary-500">works</span>.
-          </h1>
-          <button className="button button-big mt-8">Get in touch</button>
+      <section id="hero">
+        <div className="items-cener relative z-100 flex justify-center bg-fixed px-5 py-70 md:px-20">
+          {width > 560 ? (
+            <SplineLandingScene />
+          ) : (
+            <div className="smb-container">
+              <img
+                className="spline-mobile-background"
+                src={LandingSplineImg}
+                alt="landing background"
+              />
+            </div>
+          )}
+          <div className="flex h-fit w-fit flex-col items-center justify-center rounded-[1.5rem] bg-transparent px-5 py-10 backdrop-blur-md md:px-20 md:py-10">
+            <h1 className="text-4xl font-bold text-white">
+              Designing what looks{" "}
+              <span className="text-primary-500">good</span>,
+              <br />
+              Building what <span className="text-secondary-500">works</span>.
+            </h1>
+            <button className="button-xl mt-8 flex flex-row items-center justify-center gap-2">
+              Get in touch
+              <LinkIco size={25} />
+            </button>
+          </div>
+        </div>
+      </section>
+      <section id="skills">
+        <div className="flex h-fit w-full flex-col items-center justify-center gap-5 bg-white px-10 py-15 shadow-[5px_0px_15px_-8px_#00000090]">
+          <h1 className="font-jbm mb-10 text-5xl font-bold">Skills</h1>
+          <h3 className="text-3xl">Programing</h3>
+          <div className="flex flex-row flex-wrap justify-center gap-10">
+            {skillsMap(ProgramingSkills)}
+          </div>
+          <h3 className="text-3xl">Design</h3>
+          <div className="flex flex-row flex-wrap justify-center gap-10">
+            {skillsMap(DesignSkills)}
+          </div>
         </div>
       </section>
       <section id="projects">
-        <div className="flex h-fit w-full flex-col gap-5 bg-white px-10 py-15 shadow-[5px_0px_15px_-8px_#00000090]">
-          <h1 className="mb-3 text-3xl">Projects</h1>
+        <div className="flex h-fit w-full flex-col items-center justify-center gap-5 bg-white px-10 py-15">
+          <h1 className="font-jbm mb-10 text-5xl font-bold">Projects</h1>
           <div className="border-primary-300 flex flex-col gap-5 rounded-xl border px-6 py-4 shadow-[0px_10px_15px_-10px_#00000030] transition-all duration-150 ease-in-out hover:shadow-[0px_15px_20px_-10px_#00000030] md:flex-row">
             <div className="w-full">
-              <h2 className="mb-5 text-2xl font-bold">Grade manager</h2>
-              <p className="text-neutral-800">
+              <h2 className="font-md mb-5 text-2xl">Grade manager</h2>
+              <p className="text-neutral-700">
                 A grade management and analysis system that allows students to
                 track their grades. This project gave me the opportunity to
                 learn about database design, security, UI/UX and how a webapp
