@@ -8,47 +8,40 @@ import useWindowWidth from "../Hooks/useWindowWidth";
 
 // Skills icons
 import ReactLogo from "../Assets/Icons/Programing/react.svg";
+import ViteLogo from "../Assets/Icons/Programing/vite.svg";
 import PythonLogo from "../Assets/Icons/Programing/python.svg";
 import MySQLLogo from "../Assets/Icons/Programing/MySQL.svg";
 import JSLogo from "../Assets/Icons/Programing/JS.svg";
 import TSLogo from "../Assets/Icons/Programing/TS.svg";
+import BlenderLogo from "../Assets/Icons/Programing/blender.svg";
+import TailwindcssLogo from "../Assets/Icons/Programing/Tailwind.svg";
+import FigmaLogo from "../Assets/Icons/Programing/Figma.svg";
 import SplineLogo from "../Assets/Icons/Programing/Spline.png";
 
-type tech = string | "" | "" | "";
-const techImg: Record<tech, string> = {
-  "": "",
-};
-const techColor: Record<tech, string> = {
-  //   TypeScript: "#0000ff",
-  //   ReactJS: "#01d1dd",
-  //   MySQL: "#f5d8d8",
-  //   JavaScript: "#eeee00",
-};
-
-type skill = { skill: string; icon: string; class: string };
+type skill = { name: string; icon: string; class: string };
 const ProgramingSkills: skill[] = [
   {
-    skill: "TypeScript",
+    name: "TypeScript",
     icon: TSLogo,
     class: "p-0! bg-[#007acc]!",
   },
   {
-    skill: "JavaScript",
+    name: "JavaScript",
     icon: JSLogo,
     class: "p-0! bg-[#f0db4f]!",
   },
   {
-    skill: "Python",
+    name: "Python",
     icon: PythonLogo,
     class: "",
   },
   {
-    skill: "MySQL",
+    name: "MySQL",
     icon: MySQLLogo,
     class: "bg-neutral-800!",
   },
   {
-    skill: "React",
+    name: "React",
     icon: ReactLogo,
     class: "spin-animation bg-transparent",
   },
@@ -56,21 +49,80 @@ const ProgramingSkills: skill[] = [
 
 const DesignSkills: skill[] = [
   {
-    skill: "Figma",
-    icon: MySQLLogo,
-    class: "bg-neutral-800!",
+    name: "Figma",
+    icon: FigmaLogo,
+    class: "",
   },
   {
-    skill: "Blender",
-    icon: MySQLLogo,
-    class: "bg-neutral-800!",
+    name: "Blender",
+    icon: BlenderLogo,
+    class: "",
   },
   {
-    skill: "Spline",
+    name: "Spline",
     icon: SplineLogo,
     class: "",
   },
+
+  {
+    name: "Tailwindcss",
+    icon: TailwindcssLogo,
+    class: "",
+  },
 ];
+
+const skills: Record<string, skill> = {
+  Figma: {
+    name: "Figma",
+    icon: FigmaLogo,
+    class: "",
+  },
+  Blender: {
+    name: "Blender",
+    icon: BlenderLogo,
+    class: "",
+  },
+  Spline: {
+    name: "Spline",
+    icon: SplineLogo,
+    class: "",
+  },
+  Tailwind: {
+    name: "Tailwindcss",
+    icon: TailwindcssLogo,
+    class: "",
+  },
+  TypeScript: {
+    name: "TypeScript",
+    icon: TSLogo,
+    class: "p-0! bg-[#007acc]!",
+  },
+  JavaScript: {
+    name: "JavaScript",
+    icon: JSLogo,
+    class: "p-0! bg-[#f0db4f]!",
+  },
+  vite: {
+    name: "Vite",
+    icon: ViteLogo,
+    class: "",
+  },
+  Python: {
+    name: "Python",
+    icon: PythonLogo,
+    class: "",
+  },
+  MySQL: {
+    name: "MySQL",
+    icon: MySQLLogo,
+    class: "bg-neutral-800!",
+  },
+  React: {
+    name: "React",
+    icon: ReactLogo,
+    class: "bg-transparent",
+  },
+};
 
 const skillsMap = (skills: skill[]) => {
   return skills.map((skill) => (
@@ -90,22 +142,88 @@ const skillsMap = (skills: skill[]) => {
   ));
 };
 
+const techstackMap = (stack: string[]) => {
+  return stack.map((tech) => {
+    const Tech = skills[tech];
+    console.log(Tech, tech);
+    if (Tech !== undefined)
+      return (
+        <div className="flex flex-col items-center justify-center rounded-sm">
+          <img
+            src={Tech.icon ? Tech.icon : ""}
+            alt=""
+            className={
+              "h-27 w-27 rounded-md bg-transparent p-5 md:h-25 md:w-25 " +
+              (Tech.class ? Tech.class : "")
+            }
+          />
+          <p className="text-center">{Tech.skill}</p>
+        </div>
+      );
+  });
+};
+
+type Project = {
+  title: string;
+  description: string;
+  image: string;
+  link?: string;
+  techStack: string[];
+  // techStack: skill[];
+};
+const WebDevProjects: Project[] = [
+  {
+    title: "Grade manager",
+    description: `A grade management and analysis system that allows students to track their grades. This project gave me the opportunity to learn about database design, security, UI/UX and how a webapp works.`,
+    image: "",
+    techStack: ["Vite", "React", "JavaScript", "MySQL", "Tailwind"],
+  },
+  {
+    title: "Garden Atlas",
+    description: `...`,
+    link: "https://yidu-git.github.io/garden-atlas-website",
+    image: "",
+    techStack: ["Vite", "React", "TypeScript", "Tailwind"],
+  },
+];
+
+const projectMap = (projects: Project[]) => {
+  return projects.map(({ title, description, link, techStack }) => (
+    <div className="flex w-full flex-col gap-2 rounded-md border px-4 py-5 md:px-8">
+      <div className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:justify-between">
+        <h1 className="font-jbm mb-2 justify-self-start text-3xl md:text-4xl">
+          {title}
+        </h1>
+        {link && (
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            <button className="sm:button-lg button-outline gap-3 font-medium">
+              <Link2 size={25} className="md:w-5" />
+              Visit site
+            </button>
+          </a>
+        )}
+      </div>
+      <div className="flex flex-col">
+        <p className="text-lg">{description}</p>
+      </div>
+      <div className="flex flex-col">
+        <h3 className="text-2xl font-normal">Techstack:</h3>
+        <div className="flex flex-row flex-wrap gap-2 md:gap-4">
+          {techstackMap(techStack)}
+        </div>
+      </div>
+    </div>
+  ));
+};
+
 const LandingPage = () => {
   const width = useWindowWidth();
 
-  const techStackMap = (stack: tech[]) => {
-    return stack.map((tech, i) => (
-      <div key={tech + i}>
-        <img src={techImg[tech]} alt="" />
-        <p style={{ color: techColor[tech] }}>{tech}</p>
-      </div>
-    ));
-  };
   return (
     <div className="flex flex-col">
       <section id="hero">
-        <div className="items-cener relative z-100 flex justify-center bg-fixed px-5 py-70 md:px-20">
-          {width > 560 ? (
+        <div className="items-cener relative z-100 flex justify-center bg-white bg-fixed px-5 py-70 md:px-20">
+          {width > 760 ? (
             <SplineLandingScene />
           ) : (
             <div className="smb-container">
@@ -130,15 +248,16 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
       <section id="skills">
         <div className="flex h-fit w-full flex-col items-center justify-center gap-5 bg-white px-10 py-15 shadow-[5px_0px_15px_-8px_#00000090]">
           <h1 className="font-jbm mb-10 text-5xl font-bold">Skills</h1>
           <h3 className="text-3xl">Programing</h3>
-          <div className="flex flex-row flex-wrap justify-center gap-10">
+          <div className="flex flex-row flex-wrap justify-center gap-5 gap-y-3 md:gap-10 md:gap-y-5">
             {skillsMap(ProgramingSkills)}
           </div>
           <h3 className="text-3xl">Design</h3>
-          <div className="flex flex-row flex-wrap justify-center gap-10">
+          <div className="flex flex-row flex-wrap justify-center gap-5 gap-y-3 md:gap-10 md:gap-y-5">
             {skillsMap(DesignSkills)}
           </div>
         </div>
@@ -146,77 +265,16 @@ const LandingPage = () => {
       <section id="projects">
         <div className="flex h-fit w-full flex-col items-center justify-center gap-5 bg-white px-10 py-15">
           <h1 className="font-jbm mb-10 text-5xl font-bold">Projects</h1>
-          <div className="border-primary-300 flex flex-col gap-5 rounded-xl border px-6 py-4 shadow-[0px_10px_15px_-10px_#00000030] transition-all duration-150 ease-in-out hover:shadow-[0px_15px_20px_-10px_#00000030] md:flex-row">
-            <div className="w-full">
-              <h2 className="font-md mb-5 text-2xl">Grade manager</h2>
-              <p className="text-neutral-700">
-                A grade management and analysis system that allows students to
-                track their grades. This project gave me the opportunity to
-                learn about database design, security, UI/UX and how a webapp
-                works.
-              </p>
-              <p className="mt-8 font-bold">Tech stack:</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {techStackMap([
-                  "JavaScript",
-                  "ReactJS",
-                  "TypeScript",
-                  "MySQL",
-                  "Vite",
-                ])}
-              </div>
-            </div>
-            <div className="mt-8 w-full md:mt-0">
-              <img src="" alt="project image" />
-              <h1>Image on the way</h1>
-            </div>
-          </div>
-          <div className="border-primary-300 flex flex-col gap-5 rounded-xl border px-6 py-4 shadow-[0px_10px_15px_-10px_#00000030] transition-all duration-150 ease-in-out hover:shadow-[0px_15px_20px_-10px_#00000030] md:flex-row">
-            <div className="w-full">
-              <div className="flex flex-row items-center justify-between">
-                <h2 className="mb-5 text-2xl font-bold">Garden atlas</h2>
-                <a
-                  href="https://yidu-git.github.io/garden-atlas-website"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="button-outline gap-2">
-                    <Link2 size={16} />
-                    Visit site
-                  </button>
-                </a>
-              </div>
-              <p className="text-neutral-800">
-                As a project for a greenathon, Garden atlas was born. This
-                project was a testiment to our teams hardwork and resilience. It
-                was also a great way to meet people intrested in design.
-              </p>
-              <p className="mt-8 font-bold">Tech stack:</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {techStackMap([
-                  "JavaScript",
-                  "ReactJS",
-                  "TypeScript",
-                  "TailwindCSS",
-                  "Vite",
-                ])}
-              </div>
-            </div>
-            <div className="mt-8 w-full overflow-hidden rounded-2xl p-0 md:mt-0">
-              <iframe
-                src="https://yidu-git.github.io/garden-atlas-website"
-                title="description"
-                width="100%"
-                height="500px"
-              ></iframe>
-              .
-            </div>
+          <div className="flex w-full flex-col gap-4 px-4 md:px-8">
+            {projectMap(WebDevProjects)}
           </div>
         </div>
       </section>
       <section id="about">
-        <div className="flex h-300 w-full flex-col gap-5 bg-white px-10 py-15 shadow-[5px_0px_15px_-8px_#00000090]">
-          <h1 className="mb-3 text-3xl">About me</h1>
+        <div className="flex h-fit w-full flex-col gap-5 bg-white px-10 py-15 shadow-[5px_0px_15px_-8px_#00000090] md:px-50">
+          <h1 className="font-jbm mb-10 self-center justify-self-center text-5xl font-bold">
+            About me
+          </h1>
           <p>
             I am a full stack developer and designer who is passionate about
             math, science, computer science and design. I have worked on
@@ -228,6 +286,20 @@ const LandingPage = () => {
             personally believe that anyone who wants to do anything related to
             programing or CS, they should start with math.
           </p>
+        </div>
+      </section>
+      <section id="contact">
+        <div className="flex h-fit w-full flex-col gap-1 bg-neutral-800 px-10 py-15 text-white md:px-50">
+          <h1 className="font-jbm mb-10 self-center justify-self-center text-5xl font-bold">
+            Contact
+          </h1>
+          <p>
+            Email :
+            <a href="mailto:yidumandefro@gmail.com"> yidumandefro@gmail.com</a>
+          </p>
+          <p>LinkedIn : yidumandefro@gmail.com</p>
+          <p>Github : github.com/yidu-git</p>
+          <p>Email : yidumandefro@gmail.com</p>
         </div>
       </section>
     </div>

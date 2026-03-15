@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+#root {
+  background-color: #000;
+  /* position: relative;
+  overflow: scroll;
+  max-height: screen;
+  height: screen;
+  width: screen; */
+}
+
 @theme {
   --color-primary-50: #bafff9;
   --color-primary-100: #aff7ff;
@@ -156,6 +165,14 @@
 
   .spin-animation {
     animation: spin 4s linear 0s infinite forwards;
+  }
+
+  .contrast {
+    /* filter: contrast(0.0000000001); */
+    /* color: red; */
+    /* mix-blend-mode: color; */
+    /* filter: invert(1); */
+    /* filter: saturate(5.1); */
   }
 }
 
