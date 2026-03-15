@@ -67,7 +67,7 @@ const DesignSkills: skill[] = [
   {
     name: "Tailwindcss",
     icon: TailwindcssLogo,
-    class: "",
+    class: "p-0!",
   },
 ];
 
@@ -102,7 +102,7 @@ const skills: Record<string, skill> = {
     icon: JSLogo,
     class: "p-0! bg-[#f0db4f]!",
   },
-  vite: {
+  Vite: {
     name: "Vite",
     icon: ViteLogo,
     class: "",
@@ -153,7 +153,7 @@ const techstackMap = (stack: string[]) => {
             src={Tech.icon ? Tech.icon : ""}
             alt=""
             className={
-              "h-27 w-27 rounded-md bg-transparent p-5 md:h-25 md:w-25 " +
+              "h-27 w-27 rounded-md bg-transparent p-5 md:h-20 md:w-20 " +
               (Tech.class ? Tech.class : "")
             }
           />
@@ -189,8 +189,8 @@ const WebDevProjects: Project[] = [
 
 const projectMap = (projects: Project[]) => {
   return projects.map(({ title, description, link, techStack }) => (
-    <div className="flex w-full flex-col gap-2 rounded-md border px-4 py-5 md:px-8">
-      <div className="flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:justify-between">
+    <div className="flex w-full flex-col gap-2 rounded-md border-[0.05rem] border-neutral-300 px-4 py-5 shadow-[0px_7px_15px_-10px_#00000050] md:px-8">
+      <div className="mb-1 flex flex-col items-start justify-center gap-3 md:flex-row md:items-center md:justify-between">
         <h1 className="font-jbm mb-2 justify-self-start text-3xl md:text-4xl">
           {title}
         </h1>
@@ -203,11 +203,11 @@ const projectMap = (projects: Project[]) => {
           </a>
         )}
       </div>
-      <div className="flex flex-col">
-        <p className="text-lg">{description}</p>
+      <div className="mb-2 flex flex-col">
+        <p className="text-lg text-neutral-600">{description}</p>
       </div>
       <div className="flex flex-col">
-        <h3 className="text-2xl font-normal">Techstack:</h3>
+        <h3 className="text-xl font-normal text-neutral-700">Techstack:</h3>
         <div className="flex flex-row flex-wrap gap-2 md:gap-4">
           {techstackMap(techStack)}
         </div>
@@ -265,7 +265,7 @@ const LandingPage = () => {
       <section id="projects">
         <div className="flex h-fit w-full flex-col items-center justify-center gap-5 bg-white px-10 py-15">
           <h1 className="font-jbm mb-10 text-5xl font-bold">Projects</h1>
-          <div className="flex w-full flex-col gap-4 px-4 md:px-8">
+          <div className="flex w-full flex-col gap-10 px-4 md:px-15">
             {projectMap(WebDevProjects)}
           </div>
         </div>
