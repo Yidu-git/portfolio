@@ -136,7 +136,7 @@ const skillsMap = (skills: skill[]) => {
         }
       />
       <h1 className="w-full py-2 text-center text-lg font-bold md:text-2xl">
-        {skill.skill}
+        {skill.name}
       </h1>
     </div>
   ));
@@ -157,7 +157,7 @@ const techstackMap = (stack: string[]) => {
               (Tech.class ? Tech.class : "")
             }
           />
-          <p className="text-center">{Tech.skill}</p>
+          <p className="text-center">{Tech.name}</p>
         </div>
       );
   });
