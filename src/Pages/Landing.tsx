@@ -180,7 +180,7 @@ const WebDevProjects: Project[] = [
   },
   {
     title: "Garden Atlas",
-    description: `...`,
+    description: `Made as a project for a hackathon, Our team designed a basic idea and app in 48hrs.`,
     link: "https://yidu-git.github.io/garden-atlas-website",
     image: "",
     techStack: ["Vite", "React", "TypeScript", "Tailwind"],
