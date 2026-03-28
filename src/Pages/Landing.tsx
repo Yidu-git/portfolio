@@ -185,6 +185,13 @@ const WebDevProjects: Project[] = [
     image: "",
     techStack: ["Vite", "React", "TypeScript", "Tailwind"],
   },
+  {
+    title: "IP Verifier and Identifier",
+    description: `A simple project made for my second week at INSA. This project helped me learn about networking and IP.`,
+    link: "https://yidu-git.github.io/ip-verifyer",
+    image: "",
+    techStack: ["Vite", "React", "TypeScript", "Tailwind"],
+  },
 ];
 
 const projectMap = (projects: Project[]) => {
